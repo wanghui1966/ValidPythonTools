@@ -1,13 +1,15 @@
 #! /usr/bin/env python3
 
+path = "/mnt/e/5/"
 
-path = "/mnt/d/按卷更新/"
-src_str = "【时未寒】"
-dst_str = "时未寒"
+# 查找第一个空格，将之前所有字符替换为dst_str
+src_str = " "
+dst_str = ""
 
-#path = "./"
-#src_str = "[飘花电影网]"
-#dst_str = ""
+#挂载硬盘
+#sudo mount -t drvfs E: /mnt/e
+#弹出硬盘
+#sudo umount /mnt/e
 
 #判断是否文件
 #if os.path.isfile(path_file_name)) == True:
@@ -24,7 +26,7 @@ for file_name in os.listdir(path):
 	pos = file_name.find(src_str)
 	if pos == -1:
 		continue
-	new_path_file_name = os.path.join(path, file_name.replace(src_str, dst_str))
+	new_path_file_name = os.path.join(path, file_name[pos + 1:])
 #判断文件是否存在
 	if os.path.exists(new_path_file_name) == True:
 		print(f"{path_file_name} rename {new_path_file_name} fail for exist")
